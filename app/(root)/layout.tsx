@@ -1,16 +1,21 @@
-import Navbar from "@/components/root/Navbar";
-import Footer from "@/components/root/Footer";
 import { ReactNode } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
+import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
+import MobileBottomNav from "@/components/dashboard/MobileBottomNav";
 
 type Props = {
   children: ReactNode;
 };
-export default function RootLayout({ children }: Props) {
+export default function DashboardLayout({ children }: Props) {
   return (
-    <section className="bg-background text-foreground overflow-hidden">
-      <Navbar />
-      <div className="">{children}</div>
-      <Footer />
-    </section>
+    <SidebarProvider>
+      <DashboardSidebar />
+      <main className="flex min-h-screen overflow-hidden w-full flex-col md:p-2 lg:ps-6 bg-muted">
+        <DashboardNavbar />
+        <div className="md:pt-2 mb-14">{children}</div>
+      </main>
+      <MobileBottomNav />
+    </SidebarProvider>
   );
 }

@@ -10,9 +10,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Channa Sense Researchs",
+  title: "FileGear | Document Management System",
   description:
-    "Web development aplikasi iot untuk Inovasi Pemantau dan Kendali Lingkungan 'Channa Sense' untuk Pemijahan Ikan Gabus Sumsel",
+    "FileGear is a document management system that allows you to manage your documents in one place.",
 };
 
 export default function RootLayout({

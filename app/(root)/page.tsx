@@ -1,21 +1,26 @@
-import AboutSection from "@/components/root/home/About";
-import ActivitySection from "@/components/root/home/Activity";
-import DatasetSection from "@/components/root/home/Dataset";
-import HeroSection from "@/components/root/home/Hero";
-import PartnersSection from "@/components/root/home/Partners";
-import ProductsSection from "@/components/root/home/Products";
-import PublicationsSection from "@/components/root/home/Publications";
+import MobilePageHeader from "@/components/dashboard/MobilePageHeader";
+import PageHeader from "@/components/dashboard/PageHeader";
+import LatestDocuments from "@/components/root/home/LatestDocuments";
+import LatestItem from "@/components/root/home/LatestItem";
+import LatestSection from "@/components/root/home/LatestSection";
 
-export default function Home() {
+export default function DashboardPage() {
   return (
-    <>
-      <HeroSection />
-      <AboutSection />
-      <ProductsSection />
-      <ActivitySection />
-      <PublicationsSection />
-      <DatasetSection />
-      <PartnersSection />
-    </>
+    <main className="bg-white rounded-2xl overflow-hidden  w-full lg:p-6 p-4 min-h-screen border space-y-8">
+      {/* PAGE HEADER */}
+      <div className="flex flex-col lg:flex-row justify-between items-center">
+        <PageHeader
+          title="Dashboard Overview"
+          subtitle="Selamat datang di dashboard FileGear!"
+          hidden
+        />
+        <MobilePageHeader title="Dashboard Overview" />
+      </div>
+      <div className="space-y-8">
+        <LatestSection />
+        <LatestItem />
+        <LatestDocuments />
+      </div>
+    </main>
   );
 }
