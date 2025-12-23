@@ -31,7 +31,7 @@ export default function ItemsDocuments() {
     return <Skeleton className="h-32 w-full rounded-2xl" />;
 
   return (
-    <main className="bg-white w-full  lg:p-6 p-4 min-h-screen border space-y-8">
+    <main className="bg-white w-full md:rounded-2xl lg:p-6 p-4 min-h-screen border space-y-8">
       {/* PAGE HEADER */}
       <div className="flex lg:flex-row flex-col gap-6  justify-between items-center">
         <div className="">

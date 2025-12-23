@@ -6,7 +6,7 @@ import LatestSection from "@/components/root/home/LatestSection";
 
 export default function DashboardPage() {
   return (
-    <main className="bg-white rounded-2xl overflow-hidden  w-full lg:p-6 p-4 min-h-screen border space-y-8">
+    <main className="bg-white md:rounded-2xl overflow-hidden  w-full lg:p-6 p-4 min-h-screen border space-y-8">
       {/* PAGE HEADER */}
       <div className="flex flex-col lg:flex-row justify-between items-center">
         <PageHeader

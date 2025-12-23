@@ -31,7 +31,7 @@ export default function SectionsPage() {
   );
 
   return (
-    <main className="bg-white w-full  lg:p-6 p-4 min-h-screen border space-y-8">
+    <main className="bg-white w-full md:rounded-2xl lg:p-6 p-4 min-h-screen border space-y-8">
       {/* PAGE HEADER */}
       <div className="flex flex-col lg:flex-row  justify-between items-center">
         <PageHeader
