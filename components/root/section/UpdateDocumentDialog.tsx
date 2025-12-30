@@ -16,11 +16,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
-import { PlusCircle } from "lucide-react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { PenBox } from "lucide-react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { Spinner } from "@/components/ui/spinner";
-import { CreateDocumentType } from "@/lib/types/document";
+import { CreateDocumentType, DocumentType } from "@/lib/types/document";
 import { createDocument } from "@/lib/networks/document";
 import {
   Select,
@@ -30,7 +30,6 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { getAllItems } from "@/lib/networks/item";
 import { Textarea } from "@/components/ui/textarea";
 
 const DocumentSchema = z.object({
@@ -46,14 +45,13 @@ const DocumentSchema = z.object({
 
 type DocumentFormType = z.infer<typeof DocumentSchema>;
 
-export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
+export default function UpdateDocumentDialog({
+  document,
+}: {
+  document: DocumentType;
+}) {
   const [open, setOpen] = useState(false);
   const qc = useQueryClient();
-
-  const { data: items } = useQuery({
-    queryFn: getAllItems,
-    queryKey: ["items"],
-  });
 
   function detectFileType(file: File): DocumentFormType["fileType"] {
     const type = file.type;
@@ -69,20 +67,21 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
 
   const form = useForm<DocumentFormType>({
     resolver: zodResolver(DocumentSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      type: "PROCEDURE",
-      fileType: "PDF",
-      itemId: itemId ? itemId : "",
+    values: {
+      title: document?.title || "",
+      description: document?.description || "",
+      type: document?.type || "PROCEDURE",
+      fileType: document?.fileType || "PDF",
+      itemId: document?.itemId || "",
+      file: document?.fileUrl as unknown as File,
     },
   });
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (values: CreateDocumentType) => createDocument(values),
-    onSuccess: () => {
+    onSuccess: (_, values) => {
       qc.invalidateQueries({ queryKey: ["documents"] });
-      qc.invalidateQueries({ queryKey: ["items", itemId] });
+      qc.invalidateQueries({ queryKey: ["items", values.itemId] });
       toast.success("Document berhasil dibuat");
       setOpen(false);
       form.reset();
@@ -110,8 +109,8 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="rounded-full px-4 py-2">
-          <PlusCircle className="mr-2 h-4 w-4" />
-          Create New Document
+          <PenBox className="mr-2 h-4 w-4" />
+          Update Document
         </Button>
       </DialogTrigger>
 
@@ -213,34 +212,6 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
                     </Field>
                   )}
                 />
-
-                {!itemId && (
-                  <Field>
-                    <FieldLabel>Select Section</FieldLabel>
-                    <Controller
-                      name="itemId"
-                      control={form.control}
-                      render={({ field }) => (
-                        <Select {...field} onValueChange={field.onChange}>
-                          <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Pilih Wilayah" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {items?.map((section) => (
-                              <SelectItem
-                                key={section.id}
-                                value={section.id}
-                                className="capitalize"
-                              >
-                                {section.name}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      )}
-                    />
-                  </Field>
-                )}
               </div>
             </div>
 

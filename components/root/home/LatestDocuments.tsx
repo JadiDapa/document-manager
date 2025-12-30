@@ -6,7 +6,7 @@ import DataTable from "../DataTable";
 import { documentColumns } from "@/lib/column/document";
 import SearchDataTable from "../SearchDataTable";
 import { getAllDocuments } from "@/lib/networks/document";
-// import CreateDocumentDialog from "../section/CreateDocumentDialog";
+import Link from "next/link";
 
 export default function LatestDocument() {
   const { data: documents } = useQuery({
@@ -17,13 +17,15 @@ export default function LatestDocument() {
   return (
     <section className="space-y-6">
       <div className="flex items-center justify-between">
-        <p>Latest Document</p>
+        <p className="text-lg font-semibold">Latest Document</p>
         <div className="flex items-center gap-6">
-          {/* <CreateDocumentDialog /> */}
-          <div className="flex items-center gap-3 cursor-pointer text-muted-foreground hover:text-foreground transition">
+          <Link
+            href={"/documents"}
+            className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-3 transition"
+          >
             <p>See More</p>
             <ArrowRight className="h-4 w-4" />
-          </div>
+          </Link>
         </div>
       </div>
       <DataTable

@@ -2,26 +2,35 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Bookmark } from "lucide-react";
+import { Bookmark, Folder, FileText, Layers, ArrowRight } from "lucide-react";
 import { SectionType } from "@/lib/types/section";
 import { format } from "date-fns";
 import Link from "next/link";
 
 export default function SectionCard({ section }: { section: SectionType }) {
+  const itemCount = section.items.length;
+  const documentCount = section.items.reduce(
+    (sum, item) => sum + item.documents.length,
+    0,
+  );
+
   return (
-    <Link href={`/sections/${section.id}`}>
-      <Card className="w-full rounded-2xl shadow-sm border bg-white">
-        <CardContent className="p-5 space-y-4">
+    <Link href={`/sections/${section.id}`} className="block">
+      <Card className="bg-primary/10 rounded-2xl border shadow-sm transition hover:shadow-md">
+        <CardContent className="space-y-4 p-5">
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-black flex items-center justify-center text-white font-bold">
-                a
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600/10">
+                <Folder className="h-5 w-5 text-indigo-600" />
               </div>
+
               <div>
-                <p className="font-semibold text-sm">{section.name}</p>
-                <p className="text-xs text-muted-foreground">
-                  {format(section.createdAt, "d MMMM yyyy")}
+                <p className="text-sm leading-tight font-semibold">
+                  {section.name}
+                </p>
+                <p className="text-muted-foreground text-xs">
+                  Created {format(new Date(section.createdAt), "dd MMM yyyy")}
                 </p>
               </div>
             </div>
@@ -29,37 +38,41 @@ export default function SectionCard({ section }: { section: SectionType }) {
             <Button
               variant="outline"
               size="sm"
-              className="h-8 px-3 text-xs gap-1"
+              className="h-8 gap-1 px-3 text-xs"
             >
               Save <Bookmark className="h-3 w-3" />
             </Button>
           </div>
 
-          {/* Title */}
-          <h3 className="text-lg font-semibold leading-snug capitalize">
-            {section.name}
-          </h3>
+          {/* Description */}
+          {section.description && (
+            <p className="text-muted-foreground line-clamp-2 text-sm">
+              {section.description}
+            </p>
+          )}
 
-          {/* Tags */}
-          {/* <div className="flex gap-2">
-          <Badge variant="secondary" className="rounded-md">
-            Part-time
-          </Badge>
-          <Badge variant="secondary" className="rounded-md">
-            Senior level
-          </Badge>
-        </div> */}
+          {/* Stats */}
+          <div className="flex items-center gap-6 text-sm text-slate-600">
+            <div className="flex items-center gap-2">
+              <Layers className="h-4 w-4" />
+              <span>{itemCount} Items</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FileText className="h-4 w-4" />
+              <span>{documentCount} Documents</span>
+            </div>
+          </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-4 border-t">
-            <div>
-              <p className="font-semibold">
-                {section.items.length} Items Available
-              </p>
-              <p className="text-xs text-muted-foreground">San Francisco, CA</p>
-            </div>
+          <div className="flex items-center justify-between border-t pt-4">
+            <p className="text-muted-foreground text-xs">
+              Manage items and documents in this section
+            </p>
 
-            <Button className="rounded-lg px-5">See Items</Button>
+            <Button className="gap-2 rounded-lg px-4">
+              See Items
+              <ArrowRight className="h-4 w-4" />
+            </Button>
           </div>
         </CardContent>
       </Card>

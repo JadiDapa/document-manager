@@ -4,9 +4,9 @@ export default function PageHeader({
   hidden,
 }: PageHeaderProps) {
   return (
-    <div className={`${hidden ? "hidden" : "block"}`}>
+    <div className={`${hidden ? "max-lg:hidden" : "block"}`}>
       <div className="space-y-2">
-        <h1 className="text-2xl md:text-4xl font-semibold capitalize">
+        <h1 className="text-2xl font-semibold capitalize md:text-4xl">
           {title}
         </h1>
         <p>{subtitle}</p>

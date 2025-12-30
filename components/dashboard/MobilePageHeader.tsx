@@ -21,7 +21,7 @@ export default function MobilePageHeader({ title }: { title?: string }) {
 
   return (
     <header
-      className={`md:hidden ${isRoot ? " " : "fixed px-3 shadow-2xl top-0 left-0 z-100 bg-white "}  pt-4 w-full pb-3 `}
+      className={`md:hidden ${isRoot ? " " : "fixed top-0 left-0 z-100 bg-white px-3 shadow-2xl"} w-full pt-4 pb-3`}
     >
       {isRoot ? (
         /* ===== ROOT PAGE HEADER ===== */
@@ -30,9 +30,9 @@ export default function MobilePageHeader({ title }: { title?: string }) {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-xl font-semibold">
-                Hello, {account.account?.fullName || "Daffa Althaf"}
+                Hello, {account.account?.fullName}
               </h1>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 Welcome to FileGear
               </p>
             </div>
@@ -51,25 +51,25 @@ export default function MobilePageHeader({ title }: { title?: string }) {
 
           {/* Search */}
           <div className="flex items-center gap-3">
-            <div className="flex flex-1 items-center gap-2 rounded-full bg-muted px-4 py-3">
-              <Search className="size-4 text-muted-foreground" />
+            <div className="bg-muted flex flex-1 items-center gap-2 rounded-full px-4 py-3">
+              <Search className="text-muted-foreground size-4" />
               <input
                 placeholder="Search"
-                className="bg-transparent text-sm outline-none w-full"
+                className="w-full bg-transparent text-sm outline-none"
               />
             </div>
 
-            <button className="flex size-11 items-center justify-center rounded-full bg-foreground text-background">
+            <button className="bg-foreground text-background flex size-11 items-center justify-center rounded-full">
               <SlidersHorizontal className="size-5" />
             </button>
           </div>
         </div>
       ) : (
         /* ===== OTHER PAGES HEADER ===== */
-        <div className="relative flex items-center justify-between ">
+        <div className="relative flex items-center justify-between">
           <button
             onClick={() => router.back()}
-            className=" flex size-10 items-center justify-center rounded-full "
+            className="flex size-10 items-center justify-center rounded-full"
           >
             <ArrowLeft className="size-5" />
           </button>
@@ -77,7 +77,7 @@ export default function MobilePageHeader({ title }: { title?: string }) {
           <h1 className="text-lg font-semibold">{title}</h1>
           <button
             onClick={() => router.back()}
-            className=" flex size-10 items-center justify-center rounded-full "
+            className="flex size-10 items-center justify-center rounded-full"
           >
             <EllipsisVertical className="size-5" />
           </button>

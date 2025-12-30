@@ -12,9 +12,12 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download, FileText } from "lucide-react";
+import { Download, FileText, Trash } from "lucide-react";
 import { DocumentType } from "@/lib/types/document";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import UpdateDocumentDialog from "../section/UpdateDocumentDialog";
+import DeleteDialog from "../DeleteDialog";
+import { deleteDocument } from "@/lib/networks/document";
 
 export default function DocumentDetailDialog({
   document,
@@ -39,7 +42,7 @@ export default function DocumentDetailDialog({
   const renderPreview = () => {
     if (document.fileType === "IMAGE") {
       return (
-        <div className="relative aspect-video w-full overflow-hidden rounded-xl border bg-muted">
+        <div className="bg-muted relative aspect-video w-full overflow-hidden rounded-xl border">
           <Image
             src={document.fileUrl}
             alt={document.title}
@@ -72,8 +75,8 @@ export default function DocumentDetailDialog({
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-2xl py-0">
-        <ScrollArea className="max-h-[90vh] p-6 ">
+      <DialogContent className="py-0 sm:max-w-2xl">
+        <ScrollArea className="max-h-[90vh] p-6">
           <DialogHeader className="flex flex-row items-center gap-4 pt-8">
             <figure className="relative size-12 shrink-0">
               <Image
@@ -86,7 +89,7 @@ export default function DocumentDetailDialog({
 
             <div className="space-y-1">
               <DialogTitle className="text-xl">{document.title}</DialogTitle>
-              <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              <div className="text-muted-foreground flex flex-wrap items-center gap-2 text-sm">
                 <span>{document.fileType} file</span>
                 <span>•</span>
                 <span>
@@ -100,7 +103,7 @@ export default function DocumentDetailDialog({
             </div>
           </DialogHeader>
 
-          <div className="mt-6 space-y-6 ">
+          <div className="mt-6 space-y-6">
             {/* Preview / Illustration */}
             <div className="md:col-span-2">
               {isPreviewable ? (
@@ -113,13 +116,13 @@ export default function DocumentDetailDialog({
                     width={64}
                     height={64}
                   />
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     This file type can’t be previewed.
                   </p>
                   <a
                     href={document.fileUrl}
                     download
-                    className="inline-flex items-center gap-2 text-primary underline"
+                    className="text-primary inline-flex items-center gap-2 underline"
                   >
                     <Download className="size-4" />
                     Download file
@@ -132,10 +135,10 @@ export default function DocumentDetailDialog({
             <div className="space-y-4">
               <Card className="rounded-xl p-4">
                 <div className="flex items-center gap-2">
-                  <FileText className="size-4 text-muted-foreground" />
+                  <FileText className="text-muted-foreground size-4" />
                   <span className="text-sm font-medium">Description</span>
                 </div>
-                <p className="mt-2 text-sm text-muted-foreground">
+                <p className="text-muted-foreground mt-2 text-sm">
                   {document.description || "No description provided."}
                 </p>
               </Card>
@@ -145,7 +148,7 @@ export default function DocumentDetailDialog({
                   <a
                     href={document.fileUrl}
                     download
-                    className="flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium"
                   >
                     <Download className="size-4" />
                     Download {document.fileType}
@@ -156,9 +159,17 @@ export default function DocumentDetailDialog({
           </div>
 
           <DialogFooter className="mt-6 pb-8">
-            <Button variant="outline" onClick={() => setOpen(false)}>
-              Close
-            </Button>
+            <div className="flex justify-end gap-4">
+              <UpdateDocumentDialog document={document} />
+              <DeleteDialog
+                mutatuonFn={deleteDocument}
+                params={document.id}
+                queryKey={["items", document.item.id]}
+              />
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Close
+              </Button>
+            </div>
           </DialogFooter>
         </ScrollArea>
       </DialogContent>

@@ -63,8 +63,9 @@ export default function CreateItemDialog({
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (values: CreateItemType) => createItem(values),
-    onSuccess: () => {
+    onSuccess: (_, values) => {
       qc.invalidateQueries({ queryKey: ["items"] });
+      qc.invalidateQueries({ queryKey: ["sections", values.sectionId] });
       toast.success("Item berhasil dibuat");
       setOpen(false);
       form.reset();
@@ -92,7 +93,7 @@ export default function CreateItemDialog({
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>Create New Item</DialogTitle>
-          <p className="text-sm text-muted-foreground -mt-1">
+          <p className="text-muted-foreground -mt-1 text-sm">
             Create a new item to manage your items
           </p>
         </DialogHeader>

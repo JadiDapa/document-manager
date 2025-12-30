@@ -1,7 +1,7 @@
 export interface CreateUserType {
-  email: string;
+  username: string;
   fullName: string;
-  role: Role;
+  role: RoleType;
 }
 
 export interface UserType extends CreateUserType {
@@ -10,8 +10,7 @@ export interface UserType extends CreateUserType {
   updatedAt: Date;
 }
 
-export enum Role {
-  STUDENT = "STUDENT",
-  LECTURER = "LECTURER",
+export enum RoleType {
   ADMIN = "ADMIN",
+  GUEST = "GUEST",
 }

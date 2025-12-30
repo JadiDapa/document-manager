@@ -6,9 +6,9 @@ import LatestSection from "@/components/root/home/LatestSection";
 
 export default function DashboardPage() {
   return (
-    <main className="bg-white md:rounded-2xl overflow-hidden  w-full lg:p-6 p-4 min-h-screen border space-y-8">
+    <main className="min-h-screen w-full space-y-8 overflow-hidden border bg-white p-4 md:rounded-2xl lg:p-6">
       {/* PAGE HEADER */}
-      <div className="flex flex-col lg:flex-row justify-between items-center">
+      <div className="flex flex-col items-center justify-between lg:flex-row">
         <PageHeader
           title="Dashboard Overview"
           subtitle="Selamat datang di dashboard FileGear!"

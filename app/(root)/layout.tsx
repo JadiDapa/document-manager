@@ -9,11 +9,11 @@ type Props = {
 };
 export default function DashboardLayout({ children }: Props) {
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <DashboardSidebar />
-      <main className="flex min-h-screen overflow-hidden w-full flex-col md:p-2 lg:ps-6 bg-muted">
+      <main className="bg-muted flex min-h-screen w-full flex-col overflow-hidden md:p-2 lg:ps-6">
         <DashboardNavbar />
-        <div className="md:pt-2 mb-14">{children}</div>
+        <div className="max-lg:mb-14 md:pt-2">{children}</div>
       </main>
       <MobileBottomNav />
     </SidebarProvider>

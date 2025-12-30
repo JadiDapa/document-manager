@@ -2,43 +2,61 @@
 
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Mail, Bell, Search } from "lucide-react";
+import { Mail, Bell, Search, Menu } from "lucide-react";
 import Image from "next/image";
 import { useAccount } from "@/providers/AccountProvider";
+import { useSidebar } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
-  const account = useAccount();
+  const { account } = useAccount();
+  const { toggleSidebar } = useSidebar();
+
+  console.log(account);
 
   return (
-    <header className="w-full  items-center justify-between hidden md:flex bg-white border border-border px-6 py-3 rounded-2xl">
-      {/* Search */}
-      <div className="flex items-center gap-3 w-87 border bg-card px-4 py-2 rounded-full">
-        <Search />
+    <header className="border-border hidden w-full items-center justify-between rounded-2xl border bg-white px-6 py-3 md:flex">
+      {/* Left */}
+      <div className="flex items-center gap-4">
+        {/* Sidebar Trigger */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleSidebar}
+          className="hidden md:flex"
+        >
+          <Menu className="size-5" />
+        </Button>
 
-        <Input
-          type="text"
-          placeholder="Search task"
-          className="border-none bg-transparent shadow-none p-0 focus-visible:ring-0 text-sm"
-        />
+        {/* Search */}
+        <div className="bg-card flex w-87 items-center gap-3 rounded-full border px-4 py-2">
+          <Search />
 
-        <Badge className="bg-gray-200 text-gray-600 px-2 py-1 rounded-md">
-          ⌘ F
-        </Badge>
+          <Input
+            type="text"
+            placeholder="Search task"
+            className="border-none bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
+          />
+
+          <Badge className="rounded-md bg-gray-200 px-2 py-1 text-gray-600">
+            ⌘ F
+          </Badge>
+        </div>
       </div>
 
-      {/* Icons + User */}
+      {/* Right */}
       <div className="flex items-center gap-2">
-        <div className="bg-card p-2 rounded-full border">
+        <div className="bg-card rounded-full border p-2">
           <Mail className="size-5 text-gray-600" />
         </div>
-        <div className="bg-card p-2 rounded-full border">
+        <div className="bg-card rounded-full border p-2">
           <Bell className="size-5 text-gray-600" />
         </div>
 
         {/* Profile */}
         <div className="flex items-center gap-3">
           <Image
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s" // replace with actual avatar
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4YreOWfDX3kK-QLAbAL4ufCPc84ol2MA8Xg&s"
             width={38}
             height={38}
             alt="avatar"
@@ -46,12 +64,8 @@ export default function Navbar() {
           />
 
           <div className="flex flex-col leading-tight">
-            <span className="font-medium">
-              {account.account?.fullName || "Daffa Althaf"}
-            </span>
-            <span className="text-sm text-gray-500">
-              daffaalthaf25@gmail.com
-            </span>
+            <span className="font-medium">{account?.fullName}</span>
+            <span className="text-sm text-gray-500">{account?.role}</span>
           </div>
         </div>
       </div>

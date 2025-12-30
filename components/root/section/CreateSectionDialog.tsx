@@ -72,7 +72,7 @@ export default function CreateSectionDialog() {
       <DialogContent className="max-w-lg">
         <DialogHeader>
           <DialogTitle>Create New Section</DialogTitle>
-          <p className="text-sm text-muted-foreground -mt-1">
+          <p className="text-muted-foreground -mt-1 text-sm">
             Create a new section to manage your items
           </p>
         </DialogHeader>

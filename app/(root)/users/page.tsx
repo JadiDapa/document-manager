@@ -7,45 +7,42 @@ import PageHeader from "@/components/dashboard/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import CreateItemDialog from "@/components/root/item/CreateItemDialog";
-import { ItemType } from "@/lib/types/item";
-import ItemCard from "@/components/root/item/ItemCard";
-import { useParams } from "next/navigation";
-import { getSectionById } from "@/lib/networks/section";
+import CreateUserDialog from "@/components/root/user/CreateUserDialog";
+import { UserType } from "@/lib/types/user";
+import MobilePageHeader from "@/components/dashboard/MobilePageHeader";
+import { getAllUsers } from "@/lib/networks/user";
+import UserCard from "@/components/root/user/UserCard";
 
-export default function SectionsItem() {
-  const { id } = useParams();
-
+export default function UsersPage() {
   const {
-    data: section,
+    data: users,
     refetch,
     isFetching,
     isLoading,
   } = useQuery({
-    queryFn: () => getSectionById(id as string),
-    queryKey: ["sections", id],
+    queryFn: getAllUsers,
+    queryKey: ["users"],
   });
 
   const [search, setSearch] = useState("");
 
-  const filteredInternetPackages = section?.items?.filter((r) =>
-    r.name.toLowerCase().includes(search.toLowerCase()),
+  const filteredInternetPackages = users?.filter((r) =>
+    r.username.toLowerCase().includes(search.toLowerCase()),
   );
-
-  if (!filteredInternetPackages || !section || isLoading)
-    return <Skeleton className="h-32 w-full rounded-2xl" />;
 
   return (
     <main className="min-h-screen w-full space-y-8 border bg-white p-4 md:rounded-2xl lg:p-6">
       {/* PAGE HEADER */}
-      <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
-        <div className="">
-          <p className="text-primary font-semibold">Section :</p>
-          <PageHeader title={section.name} subtitle={section.description} />
-        </div>
+      <div className="flex flex-col items-center justify-between max-md:mt-20 lg:flex-row">
+        <PageHeader
+          title="Section List"
+          subtitle="These are all the users that you have created!"
+          hidden
+        />
+        <MobilePageHeader title="Section List" />
 
         <div className="flex gap-3">
-          <CreateItemDialog sectionId={id as string} />
+          <CreateUserDialog />
 
           <Button
             variant="outline"
@@ -76,20 +73,20 @@ export default function SectionsItem() {
 
       {/* REGION LIST */}
       {isLoading ? (
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
             <Skeleton key={i} className="h-60 w-full" />
           ))}
         </div>
       ) : filteredInternetPackages?.length ? (
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
-          {filteredInternetPackages?.map((item: ItemType) => (
-            <ItemCard key={item.id} item={item} />
+          {filteredInternetPackages?.map((user: UserType) => (
+            <UserCard key={user.id} user={user} />
           ))}
         </div>
       ) : (
         <p className="text-muted-foreground mt-6">
-          No items found for &quot;{search}&quot;
+          No users found for &quot;{search}&quot;
         </p>
       )}
     </main>

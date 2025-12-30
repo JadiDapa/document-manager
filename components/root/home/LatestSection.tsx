@@ -2,7 +2,7 @@
 
 import { getAllSections } from "@/lib/networks/section";
 import { useQuery } from "@tanstack/react-query";
-import { SectionCard } from "./SectionCard";
+import SectionCard from "./SectionCard";
 import { ArrowRight } from "lucide-react";
 // import CreateSectionDialog from "../section/CreateSectionDialog";
 
@@ -11,6 +11,7 @@ import { FreeMode } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/free-mode";
+import Link from "next/link";
 
 export default function LatestSection() {
   const { data: sections } = useQuery({
@@ -26,10 +27,13 @@ export default function LatestSection() {
 
         <div className="flex items-center gap-6">
           {/* <CreateSectionDialog /> */}
-          <div className="flex items-center gap-3 cursor-pointer text-muted-foreground hover:text-foreground transition">
+          <Link
+            href={"/sections"}
+            className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-3 transition"
+          >
             <p>See More</p>
             <ArrowRight className="h-4 w-4" />
-          </div>
+          </Link>
         </div>
       </div>
 
@@ -38,10 +42,10 @@ export default function LatestSection() {
         modules={[FreeMode]}
         slidesPerView="auto"
         freeMode
-        className="overflow-visible "
+        className="overflow-visible"
       >
         {sections?.map((st) => (
-          <SwiperSlide className="max-w-fit me-6" key={st.id}>
+          <SwiperSlide className="me-6 max-w-fit" key={st.id}>
             <SectionCard section={st} />
           </SwiperSlide>
         ))}

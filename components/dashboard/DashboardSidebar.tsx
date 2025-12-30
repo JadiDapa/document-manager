@@ -7,6 +7,7 @@ import {
   Settings,
   MapPin,
   Wrench,
+  Users,
 } from "lucide-react";
 import {
   Sidebar,
@@ -45,6 +46,11 @@ const overviewItems = [
     icon: Newspaper,
     url: "/documents",
   },
+  {
+    title: "Users",
+    icon: Users,
+    url: "/users",
+  },
 ];
 
 const settingsItems = [
@@ -61,16 +67,19 @@ export default function DashboardSidebar() {
   const { signOut } = useClerk();
 
   return (
-    <Sidebar className="hidden md:flex p-2 border-none bg-muted w-70">
+    <Sidebar
+      collapsible="offcanvas"
+      className="bg-muted hidden w-70 border-none p-2 md:flex"
+    >
       <SidebarContent className="bg-muted">
-        <ScrollArea className="h-screen bg-white rounded-2xl border border-border overflow-hidden">
+        <ScrollArea className="border-border h-screen overflow-hidden rounded-2xl border bg-white">
           <div className="flex px-6 py-6 pt-6">
-            <div className="text-primary text-3xl font-semibold tracking-wide flex items-center gap-4">
+            <div className="text-primary flex items-center gap-4 text-3xl font-semibold tracking-wide">
               <figure className="relative size-10">
                 <Image
                   src={"/logo.png"}
                   fill
-                  className="object-center object-contain"
+                  className="object-contain object-center"
                   alt=""
                 />
               </figure>
@@ -78,8 +87,8 @@ export default function DashboardSidebar() {
             </div>
           </div>
           {/* Overview */}
-          <SidebarGroup className="pt-1 p-0">
-            <SidebarGroupLabel className="ps-6 font-semibold text-sm">
+          <SidebarGroup className="p-0 pt-1">
+            <SidebarGroupLabel className="ps-6 text-sm font-semibold">
               MENU
             </SidebarGroupLabel>
             <SidebarGroupContent>
@@ -89,7 +98,7 @@ export default function DashboardSidebar() {
                   return (
                     <SidebarMenuItem
                       key={item.title}
-                      className="relative p-0 rounded-none"
+                      className="relative rounded-none p-0"
                     >
                       <SidebarMenuButton asChild>
                         <Link
@@ -99,7 +108,7 @@ export default function DashboardSidebar() {
                           <div
                             className={`${
                               active ? "block" : "hidden"
-                            } absolute left-0 top-0 h-full bg-primary w-2 rounded-e-4xl`}
+                            } bg-primary absolute top-0 left-0 h-full w-2 rounded-e-4xl`}
                           />
                           <item.icon className="size-5" />
                           <span className="text-base">{item.title}</span>
@@ -113,8 +122,8 @@ export default function DashboardSidebar() {
           </SidebarGroup>
 
           {/* SETTINGS pinned to bottom */}
-          <SidebarGroup className="mt-auto p-0 pt-6  pb-6">
-            <SidebarGroupLabel className="ps-6 font-semibold text-sm">
+          <SidebarGroup className="mt-auto p-0 pt-6 pb-6">
+            <SidebarGroupLabel className="ps-6 text-sm font-semibold">
               GENERAL
             </SidebarGroupLabel>
 
@@ -126,7 +135,7 @@ export default function DashboardSidebar() {
                   return (
                     <SidebarMenuItem
                       key={item.title}
-                      className="relative p-0 rounded-none"
+                      className="relative rounded-none p-0"
                     >
                       <SidebarMenuButton asChild>
                         <Link
@@ -136,7 +145,7 @@ export default function DashboardSidebar() {
                           <div
                             className={`${
                               active ? "block" : "hidden"
-                            } absolute left-0 top-0 h-full bg-primary w-2 rounded-e-4xl`}
+                            } bg-primary absolute top-0 left-0 h-full w-2 rounded-e-4xl`}
                           />
                           <item.icon className="size-5" />
                           <span className="text-base">{item.title}</span>
@@ -145,7 +154,7 @@ export default function DashboardSidebar() {
                     </SidebarMenuItem>
                   );
                 })}
-                <SidebarMenuItem className="relative p-0 rounded-none">
+                <SidebarMenuItem className="relative rounded-none p-0">
                   <SidebarMenuButton asChild>
                     <div
                       onClick={() => signOut({ redirectUrl: "/" })}
