@@ -19,7 +19,7 @@ export const documentColumns: ColumnDef<DocumentType>[] = [
     accessorKey: "title",
     accessorFn: (row) => row.title,
     header: ({ column }) => (
-      <TableSorter column={column} header="DOCUMENT NAME" />
+      <TableSorter column={column} header="JUDUL DOKUMEN" />
     ),
     cell: ({ row }) => {
       const { title, fileType, item } = row.original;
@@ -47,7 +47,9 @@ export const documentColumns: ColumnDef<DocumentType>[] = [
 
           <div>
             <p className="text-lg font-medium">{title}</p>
-            <p className="text-sm text-muted-foreground">Item : {item.name}</p>
+            <p className="text-muted-foreground text-sm">
+              Folder : {item.name}
+            </p>
           </div>
         </div>
       );
@@ -57,7 +59,7 @@ export const documentColumns: ColumnDef<DocumentType>[] = [
   {
     accessorKey: "type",
     accessorFn: (row) => row.type,
-    header: ({ column }) => <TableSorter column={column} header="OCASSION" />,
+    header: ({ column }) => <TableSorter column={column} header="TUJUAN" />,
     cell: ({ row }) => {
       const type = row.original.type;
       return (
@@ -67,19 +69,11 @@ export const documentColumns: ColumnDef<DocumentType>[] = [
       );
     },
   },
-  {
-    accessorKey: "views",
-    accessorFn: (row) => row.views,
-    header: ({ column }) => <TableSorter column={column} header="VIEWS" />,
-    cell: ({ row }) => {
-      const views = row.original.views;
-      return <div className="text-lg font-semibold capitalize">{views}</div>;
-    },
-  },
+
   {
     accessorKey: "date",
     accessorFn: (row) => row.createdAt,
-    header: ({ column }) => <TableSorter column={column} header="DATE" />,
+    header: ({ column }) => <TableSorter column={column} header="TANGGAL" />,
     cell: ({ getValue }) => {
       const date = new Date(getValue() as Date);
       return (

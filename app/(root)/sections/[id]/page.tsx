@@ -40,7 +40,7 @@ export default function SectionsItem() {
       {/* PAGE HEADER */}
       <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
         <div className="">
-          <p className="text-primary font-semibold">Section :</p>
+          <p className="text-primary font-semibold">Divisi :</p>
           <PageHeader title={section.name} subtitle={section.description} />
         </div>
 
@@ -65,7 +65,7 @@ export default function SectionsItem() {
           <div className="bg-card flex w-100 items-center gap-3 rounded-full border px-4 py-1">
             <Search />
             <Input
-              placeholder="Search Section Name..."
+              placeholder="Cari Nama Folder..."
               className="border-none bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -89,7 +89,7 @@ export default function SectionsItem() {
         </div>
       ) : (
         <p className="text-muted-foreground mt-6">
-          No items found for &quot;{search}&quot;
+          Tidak Ada Folder Terkait Divisi &quot;{search}&quot;
         </p>
       )}
     </main>

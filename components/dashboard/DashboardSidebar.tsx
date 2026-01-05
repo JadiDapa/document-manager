@@ -69,26 +69,30 @@ export default function DashboardSidebar() {
   return (
     <Sidebar
       collapsible="offcanvas"
-      className="bg-muted hidden w-70 border-none p-2 md:flex"
+      className="bg-muted hidden border-none p-2 md:flex"
     >
       <SidebarContent className="bg-muted">
-        <ScrollArea className="border-border h-screen overflow-hidden rounded-2xl border bg-white">
+        <ScrollArea className="border-border bg-primary h-screen overflow-hidden rounded-2xl border">
           <div className="flex px-6 py-6 pt-6">
-            <div className="text-primary flex items-center gap-4 text-3xl font-semibold tracking-wide">
-              <figure className="relative size-10">
+            <div className="text-secondary flex items-center gap-4 text-3xl font-semibold tracking-wide">
+              <figure className="relative size-14 rounded-full bg-white p-1">
                 <Image
-                  src={"/logo.png"}
-                  fill
-                  className="object-contain object-center"
+                  src={"/images/logo.png"}
+                  width={60}
+                  height={60}
+                  className="object-contain object-left"
                   alt=""
                 />
               </figure>
-              <p>FileGear</p>
+              <div className="text-secondary leading-tight">
+                <p className="text-xl">Pengarsipan</p>
+                <p className="text-3xl">PUSRI</p>
+              </div>
             </div>
           </div>
           {/* Overview */}
-          <SidebarGroup className="p-0 pt-1">
-            <SidebarGroupLabel className="ps-6 text-sm font-semibold">
+          <SidebarGroup className="p-0 pt-1 text-white">
+            <SidebarGroupLabel className="text-secondary ps-6 text-sm font-semibold">
               MENU
             </SidebarGroupLabel>
             <SidebarGroupContent>
@@ -108,7 +112,7 @@ export default function DashboardSidebar() {
                           <div
                             className={`${
                               active ? "block" : "hidden"
-                            } bg-primary absolute top-0 left-0 h-full w-2 rounded-e-4xl`}
+                            } bg-secondary absolute top-0 left-0 h-full w-2 rounded-e-4xl`}
                           />
                           <item.icon className="size-5" />
                           <span className="text-base">{item.title}</span>
@@ -122,8 +126,8 @@ export default function DashboardSidebar() {
           </SidebarGroup>
 
           {/* SETTINGS pinned to bottom */}
-          <SidebarGroup className="mt-auto p-0 pt-6 pb-6">
-            <SidebarGroupLabel className="ps-6 text-sm font-semibold">
+          <SidebarGroup className="mt-auto p-0 pt-6 pb-6 text-white">
+            <SidebarGroupLabel className="text-secondary ps-6 text-sm font-semibold">
               GENERAL
             </SidebarGroupLabel>
 

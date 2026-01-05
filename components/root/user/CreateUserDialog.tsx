@@ -92,9 +92,9 @@ export default function CreateUserDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="rounded-full px-4 py-2">
+        <Button className="rounded-full px-4 py-2 text-white">
           <PlusCircle className="mr-2 h-4 w-4" />
-          Create User
+          Tambahkan Pengguna
         </Button>
       </DialogTrigger>
 
@@ -102,7 +102,7 @@ export default function CreateUserDialog() {
         <DialogHeader>
           <DialogTitle>Create New User</DialogTitle>
           <p className="text-muted-foreground -mt-1 text-sm">
-            Tambahkan user baru ke sistem
+            Tambahkan pengguna baru ke sistem
           </p>
         </DialogHeader>
 
@@ -115,7 +115,7 @@ export default function CreateUserDialog() {
                 control={form.control}
                 render={({ field }) => (
                   <Field>
-                    <FieldLabel>Full Name</FieldLabel>
+                    <FieldLabel>Nama Lengkap</FieldLabel>
                     <InputGroup>
                       <InputGroupInput
                         {...field}
@@ -149,10 +149,7 @@ export default function CreateUserDialog() {
                 render={({ field, fieldState }) => (
                   <Field className="relative">
                     <FieldLabel>Password</FieldLabel>
-                    <InputGroup className="h-12">
-                      <InputGroupAddon>
-                        <Lock />
-                      </InputGroupAddon>
+                    <InputGroup className="h-9">
                       <InputGroupInput
                         {...field}
                         className="ml-2"
@@ -181,11 +178,8 @@ export default function CreateUserDialog() {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field className="relative">
-                    <FieldLabel>Confirm Password</FieldLabel>
-                    <InputGroup className="h-12">
-                      <InputGroupAddon>
-                        <Lock />
-                      </InputGroupAddon>
+                    <FieldLabel>Konfirmasi Password</FieldLabel>
+                    <InputGroup className="h-9">
                       <InputGroupInput
                         {...field}
                         className="ml-2"
@@ -222,7 +216,7 @@ export default function CreateUserDialog() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="ADMIN">Admin</SelectItem>
-                        <SelectItem value="GUEST">Guest</SelectItem>
+                        <SelectItem value="GUEST">User</SelectItem>
                       </SelectContent>
                     </Select>
                   </Field>
@@ -238,7 +232,7 @@ export default function CreateUserDialog() {
               >
                 Batal
               </Button>
-              <Button type="submit" disabled={isPending}>
+              <Button type="submit" className="text-white" disabled={isPending}>
                 {isPending ? <Spinner /> : "Submit"}
               </Button>
             </DialogFooter>

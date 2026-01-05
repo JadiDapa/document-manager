@@ -35,8 +35,8 @@ export default function UsersPage() {
       {/* PAGE HEADER */}
       <div className="flex flex-col items-center justify-between max-md:mt-20 lg:flex-row">
         <PageHeader
-          title="Section List"
-          subtitle="These are all the users that you have created!"
+          title="Daftar Pengguna"
+          subtitle="Berikut Daftar Pengguna yang Ada di PT PUSRI!"
           hidden
         />
         <MobilePageHeader title="Section List" />
@@ -62,7 +62,7 @@ export default function UsersPage() {
           <div className="bg-card flex w-100 items-center gap-3 rounded-full border px-4 py-1">
             <Search />
             <Input
-              placeholder="Search Section Name..."
+              placeholder="Cari Username Pengguna..."
               className="border-none bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
               value={search}
               onChange={(e) => setSearch(e.target.value)}

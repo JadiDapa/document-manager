@@ -44,7 +44,10 @@ export default function DeleteDialog({
       <DialogTrigger asChild>
         <div>
           {!children && (
-            <Button variant="destructive" className="rounded-full px-4 py-2">
+            <Button
+              variant="destructive"
+              className="rounded-full px-4 py-2 text-white"
+            >
               <Trash className="mr-2 h-4 w-4" />
               Delete
             </Button>
@@ -55,14 +58,14 @@ export default function DeleteDialog({
 
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>Create New Document</DialogTitle>
+          <DialogTitle>Hapus Data Terpilih</DialogTitle>
           <p className="text-muted-foreground -mt-1 text-sm">
-            Create a new document to manage your documents
+            Apakah anda yakin ingin menghapus data ini?
           </p>
         </DialogHeader>
         <div className="flex justify-end gap-4">
           <Button onClick={() => onDeleteData()} variant="destructive">
-            Confirm
+            Konfirmasi
           </Button>
           <Button variant="outline">Cancel</Button>
         </div>

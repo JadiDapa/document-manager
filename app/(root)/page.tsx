@@ -11,7 +11,7 @@ export default function DashboardPage() {
       <div className="flex flex-col items-center justify-between lg:flex-row">
         <PageHeader
           title="Dashboard Overview"
-          subtitle="Selamat datang di dashboard FileGear!"
+          subtitle="Selamat datang di Pengarsipan PT PUSRI!"
           hidden
         />
         <MobilePageHeader title="Dashboard Overview" />

@@ -59,14 +59,7 @@ const DataTable: React.FC<DataTableProps<any, any>> = ({
 
   return (
     <div className="box-shadow w-full rounded-lg border bg-white shadow-xl">
-      {filters && (
-        <div className="w-full">
-          <div className="p-4 text-xl">{title}</div>
-          <Separator className="" />
-
-          {filters(table)}
-        </div>
-      )}
+      {filters && <div className="w-full">{filters(table)}</div>}
 
       <Separator />
 
@@ -81,7 +74,7 @@ const DataTable: React.FC<DataTableProps<any, any>> = ({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
                 );

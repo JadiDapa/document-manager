@@ -84,17 +84,17 @@ export default function CreateItemDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="rounded-full px-4 py-2">
+        <Button className="rounded-full px-4 py-2 text-white">
           <PlusCircle className="mr-2 h-4 w-4" />
-          Create New Item
+          Tambah Folder
         </Button>
       </DialogTrigger>
 
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>Create New Item</DialogTitle>
+          <DialogTitle>Tambahkan Folder Terbaru</DialogTitle>
           <p className="text-muted-foreground -mt-1 text-sm">
-            Create a new item to manage your items
+            Silahkan tambahkan folder terbaru
           </p>
         </DialogHeader>
 
@@ -107,7 +107,7 @@ export default function CreateItemDialog({
                 control={form.control}
                 render={({ field }) => (
                   <Field>
-                    <FieldLabel>Nama Item</FieldLabel>
+                    <FieldLabel>Nama Folder</FieldLabel>
                     <InputGroup>
                       <InputGroupInput
                         {...field}
@@ -128,7 +128,7 @@ export default function CreateItemDialog({
                     <InputGroup>
                       <InputGroupInput
                         {...field}
-                        placeholder="Deskripsi singkat item"
+                        placeholder="Deskripsi Folder"
                       />
                     </InputGroup>
                   </Field>
@@ -138,14 +138,14 @@ export default function CreateItemDialog({
 
             {!sectionId && (
               <Field>
-                <FieldLabel>Select Section</FieldLabel>
+                <FieldLabel>Pilih Divisi Terkait</FieldLabel>
                 <Controller
                   name="sectionId"
                   control={form.control}
                   render={({ field }) => (
                     <Select {...field} onValueChange={field.onChange}>
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Pilih Wilayah" />
+                        <SelectValue placeholder="Pilih Divisi" />
                       </SelectTrigger>
                       <SelectContent>
                         {sections?.map((section) => (
@@ -172,7 +172,7 @@ export default function CreateItemDialog({
               >
                 Batal
               </Button>
-              <Button type="submit" disabled={isPending}>
+              <Button type="submit" className="text-white" disabled={isPending}>
                 {isPending ? <Spinner /> : "Submit"}
               </Button>
             </DialogFooter>

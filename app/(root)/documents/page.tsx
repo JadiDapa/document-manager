@@ -7,7 +7,6 @@ import PageHeader from "@/components/dashboard/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
-import CreateItemDialog from "@/components/root/item/CreateItemDialog";
 import DataTable from "@/components/root/DataTable";
 import { documentColumns } from "@/lib/column/document";
 import SearchDataTable from "@/components/root/SearchDataTable";
@@ -29,29 +28,29 @@ export default function SectionsPage() {
   const [search, setSearch] = useState("");
 
   const filteredDocuments = documents?.filter((r) =>
-    r.title.toLowerCase().includes(search.toLowerCase())
+    r.title.toLowerCase().includes(search.toLowerCase()),
   );
 
   if (!documents || isLoading)
     return <Skeleton className="h-32 w-full rounded-2xl" />;
 
   return (
-    <main className="bg-white w-full md:rounded-2xl lg:p-6 p-4 min-h-screen border space-y-8">
+    <main className="min-h-screen w-full space-y-8 border bg-white p-4 md:rounded-2xl lg:p-6">
       {/* PAGE HEADER */}
-      <div className="flex flex-col lg:flex-row  justify-between items-center">
+      <div className="flex flex-col items-center justify-between lg:flex-row">
         <PageHeader
-          title="Document List"
-          subtitle="These are all the items that you have created!"
+          title="Daftar Dokumen"
+          subtitle="Berikut Daftar Dokumen yang Ada di PT PUSRI!"
           hidden
         />
-        <MobilePageHeader title="Document List" />
+        <MobilePageHeader title="Daftar Dokumen" />
 
-        <div className="flex gap-3 ">
+        <div className="flex gap-3">
           <CreateDocumentDialog />
 
           <Button
             variant="outline"
-            className="rounded-full py-4 px-4"
+            className="rounded-full px-4 py-4"
             onClick={() => refetch()}
             disabled={isFetching}
           >
@@ -63,12 +62,12 @@ export default function SectionsPage() {
 
       {/* SEARCH BAR */}
       <div>
-        <div className="w-full bg-card border p-2 rounded-2xl flex justify-between items-center px-6">
-          <div className="flex items-center gap-3 w-100 border bg-card px-4 py-1 rounded-full">
+        <div className="bg-card flex w-full items-center justify-between rounded-2xl border p-2 px-6">
+          <div className="bg-card flex w-100 items-center gap-3 rounded-full border px-4 py-1">
             <Search />
             <Input
-              placeholder="Search Section Name..."
-              className="border-none bg-transparent shadow-none p-0 focus-visible:ring-0 text-sm"
+              placeholder="Cari Judul Dokumen..."
+              className="border-none bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -81,15 +80,6 @@ export default function SectionsPage() {
         columns={documentColumns}
         data={filteredDocuments ?? []}
         title="Project Task"
-        filters={(table) => (
-          <div className="grid gap-4 p-4 lg:grid-cols-4 lg:gap-6">
-            <SearchDataTable
-              table={table}
-              column="name"
-              placeholder="Search Document Name..."
-            />
-          </div>
-        )}
       />
     </main>
   );

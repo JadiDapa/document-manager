@@ -63,9 +63,9 @@ export default function CreateSectionDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="rounded-full px-4 py-2">
+        <Button className="rounded-full px-4 py-2 text-white">
           <PlusCircle className="mr-2 h-4 w-4" />
-          Create New Section
+          Tambah Divisi
         </Button>
       </DialogTrigger>
 
@@ -86,7 +86,7 @@ export default function CreateSectionDialog() {
                 control={form.control}
                 render={({ field }) => (
                   <Field>
-                    <FieldLabel>Nama Section</FieldLabel>
+                    <FieldLabel>Nama Divisi</FieldLabel>
                     <InputGroup>
                       <InputGroupInput
                         {...field}
@@ -107,7 +107,7 @@ export default function CreateSectionDialog() {
                     <InputGroup>
                       <InputGroupInput
                         {...field}
-                        placeholder="Deskripsi singkat section"
+                        placeholder="Deskripsi singkat divisi"
                       />
                     </InputGroup>
                   </Field>
@@ -123,7 +123,7 @@ export default function CreateSectionDialog() {
               >
                 Batal
               </Button>
-              <Button type="submit" disabled={isPending}>
+              <Button className="text-white" type="submit" disabled={isPending}>
                 {isPending ? <Spinner /> : "Submit"}
               </Button>
             </DialogFooter>

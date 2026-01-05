@@ -27,16 +27,16 @@ export default function SectionsPage() {
   const [search, setSearch] = useState("");
 
   const filteredInternetPackages = items?.filter((r) =>
-    r.name.toLowerCase().includes(search.toLowerCase())
+    r.name.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
-    <main className="bg-white w-full md:rounded-2xl lg:p-6 p-4 min-h-screen border space-y-8">
+    <main className="min-h-screen w-full space-y-8 border bg-white p-4 md:rounded-2xl lg:p-6">
       {/* PAGE HEADER */}
-      <div className="flex flex-col lg:flex-row  justify-between items-center">
+      <div className="flex flex-col items-center justify-between lg:flex-row">
         <PageHeader
-          title="Items List"
-          subtitle="These are all the items that you have created!"
+          title="Daftar Folder"
+          subtitle="Berikut Semua Folder yang Ada Pada Setiap Divisi!"
           hidden
         />
         <MobilePageHeader title="Items List" />
@@ -46,7 +46,7 @@ export default function SectionsPage() {
 
           <Button
             variant="outline"
-            className="rounded-full py-4 px-4"
+            className="rounded-full px-4 py-4"
             onClick={() => refetch()}
             disabled={isFetching}
           >
@@ -58,12 +58,12 @@ export default function SectionsPage() {
 
       {/* SEARCH BAR */}
       <div>
-        <div className="w-full bg-card border p-2 rounded-2xl flex justify-between items-center px-6">
-          <div className="flex items-center gap-3 w-100 border bg-card px-4 py-1 rounded-full">
+        <div className="bg-card flex w-full items-center justify-between rounded-2xl border p-2 px-6">
+          <div className="bg-card flex w-100 items-center gap-3 rounded-full border px-4 py-1">
             <Search />
             <Input
-              placeholder="Search Section Name..."
-              className="border-none bg-transparent shadow-none p-0 focus-visible:ring-0 text-sm"
+              placeholder="Cari Nama Folder..."
+              className="border-none bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -73,20 +73,20 @@ export default function SectionsPage() {
 
       {/* REGION LIST */}
       {isLoading ? (
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
           {[1, 2, 3].map((i) => (
             <Skeleton key={i} className="h-60 w-full" />
           ))}
         </div>
       ) : filteredInternetPackages?.length ? (
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
           {filteredInternetPackages?.map((item: ItemType) => (
             <ItemCard key={item.id} item={item} />
           ))}
         </div>
       ) : (
         <p className="text-muted-foreground mt-6">
-          No items found for &quot;{search}&quot;
+          Belum Ada Folder Ditambahkan
         </p>
       )}
     </main>

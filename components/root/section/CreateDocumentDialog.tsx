@@ -109,17 +109,17 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="rounded-full px-4 py-2">
+        <Button className="rounded-full px-4 py-2 text-white">
           <PlusCircle className="mr-2 h-4 w-4" />
-          Create New Document
+          Tambahkan Dokumen
         </Button>
       </DialogTrigger>
 
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle>Create New Document</DialogTitle>
+          <DialogTitle>Tambahkan Dokumen Terbaru</DialogTitle>
           <p className="text-muted-foreground -mt-1 text-sm">
-            Create a new document to manage your documents
+            Tambah Dokumen yang Terbaru di PT PUSRI
           </p>
         </DialogHeader>
 
@@ -132,7 +132,7 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
                 control={form.control}
                 render={({ field }) => (
                   <Field>
-                    <FieldLabel>Judul Document</FieldLabel>
+                    <FieldLabel>Nama Dokumen</FieldLabel>
                     <InputGroup>
                       <InputGroupInput
                         {...field}
@@ -153,7 +153,7 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
                     <InputGroup>
                       <Textarea
                         {...field}
-                        placeholder="Deskripsi singkat document"
+                        placeholder="Deskripsi singkat dokumen"
                       />
                     </InputGroup>
                   </Field>
@@ -192,22 +192,22 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
                   control={form.control}
                   render={({ field }) => (
                     <Field>
-                      <FieldLabel>Ocassion Type</FieldLabel>
+                      <FieldLabel>Alasan</FieldLabel>
                       <Select
                         onValueChange={field.onChange}
                         value={field.value}
                       >
                         <SelectTrigger>
-                          <SelectValue placeholder="Select Document Ocassion Type..." />
+                          <SelectValue placeholder="Pilih Alasan Penambahan Dokumen..." />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="PROCEDURE">Procedure</SelectItem>
-                          <SelectItem value="REGULATION">Regulation</SelectItem>
+                          <SelectItem value="PROCEDURE">Prosedur</SelectItem>
+                          <SelectItem value="REGULATION">Regulasi</SelectItem>
                           <SelectItem value="ANNOUCEMENT">
-                            Announcement
+                            Pengumuman
                           </SelectItem>
-                          <SelectItem value="REPORTS">Reports</SelectItem>
-                          <SelectItem value="OTHER">Other</SelectItem>
+                          <SelectItem value="REPORTS">Laporan</SelectItem>
+                          <SelectItem value="OTHER">Lainnya</SelectItem>
                         </SelectContent>
                       </Select>
                     </Field>
@@ -216,7 +216,7 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
 
                 {!itemId && (
                   <Field>
-                    <FieldLabel>Select Section</FieldLabel>
+                    <FieldLabel>Pilih Folder Terkait</FieldLabel>
                     <Controller
                       name="itemId"
                       control={form.control}
@@ -252,7 +252,7 @@ export default function CreateDocumentDialog({ itemId }: { itemId?: string }) {
               >
                 Batal
               </Button>
-              <Button type="submit" disabled={isPending}>
+              <Button type="submit" className="text-white" disabled={isPending}>
                 {isPending ? <Spinner /> : "Submit"}
               </Button>
             </DialogFooter>

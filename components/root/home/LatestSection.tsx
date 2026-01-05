@@ -23,21 +23,20 @@ export default function LatestSection() {
     <section className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <p className="text-lg font-semibold">Latest Section</p>
+        <p className="text-primary text-lg font-semibold">Divisi Terbaru</p>
 
         <div className="flex items-center gap-6">
-          {/* <CreateSectionDialog /> */}
           <Link
             href={"/sections"}
-            className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-3 transition"
+            className="hover:text-foreground flex cursor-pointer items-center gap-3 font-medium text-yellow-500 transition"
           >
-            <p>See More</p>
+            <p>Lebih Lengkap</p>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
 
-      {/* Swiper */}
+      {/* Daftar Divisi */}
       <Swiper
         modules={[FreeMode]}
         slidesPerView="auto"

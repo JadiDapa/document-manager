@@ -29,7 +29,7 @@ export default function UserCard({ user }: { user: UserType }) {
 
             <div className="mt-2">
               <Badge variant="secondary" className="text-xs">
-                Joined {format(new Date(user.createdAt), "dd MMM yyyy")}
+                Bergabung : {format(new Date(user.createdAt), "dd MMM yyyy")}
               </Badge>
             </div>
           </div>
@@ -58,11 +58,11 @@ export default function UserCard({ user }: { user: UserType }) {
             params={user.id}
           >
             <Button className="bg-primary hover:text-primary mt-5 flex-1 rounded-xl rounded-e-none text-white hover:bg-white">
-              Delete User
+              Hapus Akun
             </Button>
           </DeleteDialog>
           <Button className="border-primary text-primary hover:bg-primary mt-5 flex-1 rounded-xl rounded-s-none border-2 bg-white hover:text-white">
-            Update Profile
+            Ubah Profil
           </Button>
         </div>
       </CardContent>

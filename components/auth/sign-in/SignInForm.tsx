@@ -67,6 +67,7 @@ export default function SignInForm() {
       onSubmit={form.handleSubmit(onSubmit)}
       className="mt-4 w-full lg:mt-6"
     >
+      {/* Username Form */}
       <FieldGroup {...form}>
         <div className="space-y-4">
           <Controller
@@ -79,7 +80,7 @@ export default function SignInForm() {
                     {...field}
                     className="ml-2"
                     aria-invalid={fieldState.invalid}
-                    placeholder="Full Name"
+                    placeholder="Username"
                     autoComplete="off"
                   />
                   <InputGroupAddon>
@@ -93,6 +94,7 @@ export default function SignInForm() {
             )}
           />
 
+          {/* Password Form */}
           <Controller
             control={form.control}
             name="password"
@@ -126,9 +128,10 @@ export default function SignInForm() {
           />
         </div>
 
+        {/* Submit Button  */}
         <Button
           disabled={isLoading}
-          className="flex h-10 w-full items-center gap-3 text-lg lg:h-12"
+          className="flex h-10 w-full items-center gap-3 bg-yellow-400 text-lg text-white lg:h-12"
         >
           {isLoading ? (
             <>

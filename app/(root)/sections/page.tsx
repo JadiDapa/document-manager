@@ -35,11 +35,11 @@ export default function SectionsPage() {
       {/* PAGE HEADER */}
       <div className="flex flex-col items-center justify-between lg:flex-row">
         <PageHeader
-          title="Section List"
-          subtitle="These are all the sections that you have created!"
+          title="Daftar Divisi"
+          subtitle="Berikut Daftar Divisi yang Ada di PT PUSRI!"
           hidden
         />
-        <MobilePageHeader title="Section List" />
+        <MobilePageHeader title="Daftar Divisi" />
 
         <div className="flex gap-3">
           <CreateSectionDialog />
@@ -62,7 +62,7 @@ export default function SectionsPage() {
           <div className="bg-card flex w-100 items-center gap-3 rounded-full border px-4 py-1">
             <Search />
             <Input
-              placeholder="Search Section Name..."
+              placeholder="Cari Nama Divisi..."
               className="border-none bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -85,9 +85,7 @@ export default function SectionsPage() {
           ))}
         </div>
       ) : (
-        <p className="text-muted-foreground mt-6">
-          No sections found for &quot;{search}&quot;
-        </p>
+        <p className="text-muted-foreground mt-6">Tidak ada Divisi Tersedia!</p>
       )}
     </main>
   );

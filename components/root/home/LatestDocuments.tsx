@@ -17,13 +17,13 @@ export default function LatestDocument() {
   return (
     <section className="space-y-6">
       <div className="flex items-center justify-between">
-        <p className="text-lg font-semibold">Latest Document</p>
+        <p className="text-primary text-lg font-semibold">Dokumen Terbaru</p>
         <div className="flex items-center gap-6">
           <Link
             href={"/documents"}
-            className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-3 transition"
+            className="hover:text-foreground flex cursor-pointer items-center gap-3 font-medium text-yellow-500 transition"
           >
-            <p>See More</p>
+            <p>Lebih Lengkap</p>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

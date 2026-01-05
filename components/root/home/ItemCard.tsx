@@ -26,7 +26,7 @@ export default function ItemCard({ item }: { item: ItemType }) {
 
                 {/* Section */}
                 <Badge variant="secondary" className="text-xs">
-                  {item.section?.name ?? "No Section"}
+                  {item.section?.name ?? "-"}
                 </Badge>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function ItemCard({ item }: { item: ItemType }) {
           <div className="text-muted-foreground flex items-center justify-between text-xs">
             <div className="flex items-center gap-1.5">
               <FileText className="size-4" />
-              <span>{item.documents?.length ?? 0} documents</span>
+              <span>{item.documents?.length ?? 0} Dokumen</span>
             </div>
 
             <div className="flex items-center gap-1.5">

@@ -108,7 +108,7 @@ export default function UpdateDocumentDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="rounded-full px-4 py-2">
+        <Button className="rounded-full px-4 py-2 text-white">
           <PenBox className="mr-2 h-4 w-4" />
           Update Document
         </Button>

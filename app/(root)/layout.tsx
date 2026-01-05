@@ -11,7 +11,7 @@ export default function DashboardLayout({ children }: Props) {
   return (
     <SidebarProvider defaultOpen={false}>
       <DashboardSidebar />
-      <main className="bg-muted flex min-h-screen w-full flex-col overflow-hidden md:p-2 lg:ps-6">
+      <main className="bg-muted flex min-h-screen w-full flex-col overflow-hidden md:p-2">
         <DashboardNavbar />
         <div className="max-lg:mb-14 md:pt-2">{children}</div>
       </main>

@@ -21,8 +21,8 @@ export default function SectionCard({ section }: { section: SectionType }) {
           {/* Header */}
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600/10">
-                <Folder className="h-5 w-5 text-indigo-600" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600/10">
+                <Folder className="h-5 w-5 text-blue-600" />
               </div>
 
               <div>
@@ -30,7 +30,8 @@ export default function SectionCard({ section }: { section: SectionType }) {
                   {section.name}
                 </p>
                 <p className="text-muted-foreground text-xs">
-                  Created {format(new Date(section.createdAt), "dd MMM yyyy")}
+                  Ditambahkan pada{" "}
+                  {format(new Date(section.createdAt), "dd MMM yyyy")}
                 </p>
               </div>
             </div>
@@ -40,7 +41,7 @@ export default function SectionCard({ section }: { section: SectionType }) {
               size="sm"
               className="h-8 gap-1 px-3 text-xs"
             >
-              Save <Bookmark className="h-3 w-3" />
+              <Bookmark className="h-3 w-3" />
             </Button>
           </div>
 
@@ -55,22 +56,22 @@ export default function SectionCard({ section }: { section: SectionType }) {
           <div className="flex items-center gap-6 text-sm text-slate-600">
             <div className="flex items-center gap-2">
               <Layers className="h-4 w-4" />
-              <span>{itemCount} Items</span>
+              <span>{itemCount} Folder</span>
             </div>
             <div className="flex items-center gap-2">
               <FileText className="h-4 w-4" />
-              <span>{documentCount} Documents</span>
+              <span>{documentCount} Dokumen</span>
             </div>
           </div>
 
           {/* Footer */}
           <div className="flex items-center justify-between border-t pt-4">
             <p className="text-muted-foreground text-xs">
-              Manage items and documents in this section
+              Kelola Folder dan Dokumen Pada Divisi Ini
             </p>
 
-            <Button className="gap-2 rounded-lg px-4">
-              See Items
+            <Button className="gap-2 rounded-lg bg-yellow-500 px-4 text-white">
+              Lihat Divisi
               <ArrowRight className="h-4 w-4" />
             </Button>
           </div>

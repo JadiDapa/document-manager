@@ -19,7 +19,7 @@ export default function SectionCard({ section }: { section: SectionType }) {
   return (
     <Link
       href={`/sections/${section.id}`}
-      className="group block w-72 rounded-2xl border border-purple-100 bg-linear-to-br from-purple-100/80 to-white p-5 shadow-sm transition-all hover:shadow-md"
+      className="group block w-72 rounded-2xl border border-blue-100 bg-linear-to-br from-blue-100/80 to-white p-5 shadow-sm transition-all hover:shadow-md"
     >
       {/* Header */}
       <div className="flex items-start justify-between">
@@ -67,8 +67,8 @@ export default function SectionCard({ section }: { section: SectionType }) {
       </div>
 
       {/* Footer */}
-      <div className="mt-4 flex items-center justify-between text-sm font-medium text-indigo-700 transition group-hover:translate-x-1">
-        View Section
+      <div className="text-primary mt-4 flex items-center justify-between text-sm font-medium transition group-hover:translate-x-1">
+        Kunjungi Divisi
         <ArrowRight className="h-4 w-4" />
       </div>
     </Link>

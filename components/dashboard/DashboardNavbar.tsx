@@ -34,7 +34,7 @@ export default function Navbar() {
 
           <Input
             type="text"
-            placeholder="Search task"
+            placeholder="Cari..."
             className="border-none bg-transparent p-0 text-sm shadow-none focus-visible:ring-0"
           />
 

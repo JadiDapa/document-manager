@@ -70,7 +70,7 @@ export default function DocumentDetailDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" className="rounded-full">
+        <Button size="sm" className="rounded-full text-white">
           Detail
         </Button>
       </DialogTrigger>
@@ -117,7 +117,7 @@ export default function DocumentDetailDialog({
                     height={64}
                   />
                   <p className="text-muted-foreground text-sm">
-                    This file type can’t be previewed.
+                    Tipe File Ini Tidak Dapat Di Tinjau
                   </p>
                   <a
                     href={document.fileUrl}
@@ -125,7 +125,7 @@ export default function DocumentDetailDialog({
                     className="text-primary inline-flex items-center gap-2 underline"
                   >
                     <Download className="size-4" />
-                    Download file
+                    Unduh File
                   </a>
                 </Card>
               )}
@@ -136,10 +136,10 @@ export default function DocumentDetailDialog({
               <Card className="rounded-xl p-4">
                 <div className="flex items-center gap-2">
                   <FileText className="text-muted-foreground size-4" />
-                  <span className="text-sm font-medium">Description</span>
+                  <span className="text-sm font-medium">Deskripsi</span>
                 </div>
                 <p className="text-muted-foreground mt-2 text-sm">
-                  {document.description || "No description provided."}
+                  {document.description || "Tidak Ada Deskripsi."}
                 </p>
               </Card>
 
@@ -148,10 +148,10 @@ export default function DocumentDetailDialog({
                   <a
                     href={document.fileUrl}
                     download
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium"
+                    className="bg-primary hover:bg-primary/90 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-white"
                   >
                     <Download className="size-4" />
-                    Download {document.fileType}
+                    Unduh {document.fileType}
                   </a>
                 </Card>
               )}

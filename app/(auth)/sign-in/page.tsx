@@ -5,19 +5,19 @@ import Image from "next/image";
 export default function SignInPage() {
   return (
     <section className="flex min-h-screen overflow-hidden">
-      <div className="relative hidden flex-1 lg:block">
+      <div className="relative hidden flex-1 brightness-80 lg:block">
         <Image
-          src="https://static.vecteezy.com/system/resources/previews/006/663/308/large_2x/3d-cloud-storage-design-icon-digital-file-organization-free-vector.jpg"
+          src="https://corenews.id/wp-content/uploads/2024/08/Pusri-Palembang.jpg"
           fill
           className="object-cover object-center"
           alt="Auth Image"
         />
       </div>
 
-      <main className="bg-card flex w-full flex-col items-center justify-center rounded-e-4xl p-8 shadow-2xl lg:w-[45%] lg:px-40">
+      <main className="bg-card flex w-full flex-col items-center justify-center rounded-e-4xl p-8 shadow-2xl lg:w-[46%] lg:px-36">
         <AuthHeader
-          title="Sign In Now!"
-          subtitle="Sebelum melangkah lebih lanjut, silahkan masuk terlebih dahulu!"
+          title="Selamat Datang!"
+          subtitle="masuk terlebih dahulu sebelum melangkah lebih lanjut untuk ke Pengarsipan PT PUSRI!"
         />
         <SignInForm />
       </main>
